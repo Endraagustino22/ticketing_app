@@ -39,7 +39,7 @@ class EventSeeder extends Seeder
                 'tanggal_waktu' => '2024-10-05 12:00:00',
                 'lokasi' => 'Taman Kota',
                 'kategori_id' => 3,
-                'gambar' => 'festival_makanan.jpg',
+                'gambar' => 'festival_makanan.jpeg',
             ],
         ];
         

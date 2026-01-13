@@ -7,7 +7,7 @@
         </svg>
       </div>
     </div>
-    <img src={{ asset("assets/images/logo_bengkod.svg") }} />
+    <img src={{ asset("assets/images/bengkod.jpeg") }} class="h-8 md:h-10 w-auto" />
   </div>
   <div class="navbar-center hidden lg:flex">
     <input  class="input w-72" placeholder="Cari Event..." />
@@ -15,5 +15,10 @@
   <div class="navbar-end gap-2">
     <a href="{{ route('login') }}" class="btn bg-blue-900 text-white">Login</a>
     <a href="{{ route('register') }}" class="btn text-blue-900">Register</a>
+      <form action="{{ route('logout') }}" method="POST">
+        @csrf
+        <button type="submit" class="btn btn-outline btn-error">
+          Logout
+        </button>
   </div>
 </div>

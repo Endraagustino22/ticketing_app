@@ -2,8 +2,11 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\Admin\TiketController;
+use App\Http\Controllers\Admin\HistoriesController;
 
 use App\Models\Kategori;
 use App\Models\Event;
@@ -19,23 +22,43 @@ Route::get('/', function () {
 })->name('home');
 
 
-Route::middleware('admin')->prefix('admin')->name('admin.')->group(function () {
+
+Route::middleware('auth')->group(function () {
+    
+// Admin Routes
+    Route::middleware('admin')->prefix('admin')->name('admin.')->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    
+        // Category Management
+        Route::resource('categories', CategoryController::class);
+
+        // Event Management
+        Route::resource('events', EventController::class);
+
+        // Tiket Management 
+        Route::resource('tickets', TiketController::class);
+
+         // Histories
+        Route::get('/histories', [HistoriesController::class, 'index'])->name('histories.index');
+        Route::get('/histories/{id}', [HistoriesController::class, 'show'])->name('histories.show');
+
     });
+    
 
+// dashboard home
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::resource('kategori', KategoriController::class);
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
+    
+// profile routes
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
+
+    // Route::middleware('auth')->group(function () {
+    //     Route::resource('kategori', KategoriController::class);
+    // });

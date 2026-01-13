@@ -1,7 +1,7 @@
 <footer class="footer sm:footer-horizontal bg-base-200 text-base-content p-10">
   <aside>
 
-    <img width="150" height="150" src={{ asset("assets/images/logo_bengkod.svg") }} />
+    <img width="150" height="150" src={{ asset("assets/images/bengkod.jpeg") }} class="h-8 md:h-10 w-auto" />
   </aside>
   <nav>
     <h6 class="footer-title">BENGTIX</h6>
