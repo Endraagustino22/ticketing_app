@@ -8,7 +8,13 @@ class Order extends Model
 {
     protected $fillable = [
         'user_id',
+        'event_id',
+        'order_date',
         'total_harga',
+    ];
+
+    protected $casts = [
+        'order_date' => 'datetime',
     ];
 
     public function user()
@@ -21,7 +27,7 @@ class Order extends Model
         return $this->belongsToMany(Tiket::class, 'detail_orders')->withPivot('jumlah', 'subtotal_harga');
     }
 
-    public function events()
+    public function event()
     {
         return $this->belongsTo(Event::class);
     }
