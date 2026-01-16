@@ -32,6 +32,11 @@
             <a href="{{ route('login') }}" class="btn bg-blue-900 text-white">Login</a>
             <a href="{{ route('register') }}" class="btn text-blue-900">Register</a>
         @else
+            <a href="{{ route('pemesanan.riwayat') }}" class="btn btn-outline">Riwayat <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg></a>
+            
+
             <form action="{{ route('logout') }}" method="POST">
                 @csrf
                 <button type="submit" class="btn btn-outline btn-error">

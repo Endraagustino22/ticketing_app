@@ -12,10 +12,10 @@
                                 $imageUrl = $event->gambar;
                             } else {
                                 $imageName =
-                                    !empty($event->gambar) && file_exists(public_path('storage/' . $event->gambar))
+                                    !empty($event->gambar) && file_exists(public_path('images/events/' . $event->gambar))
                                         ? $event->gambar
                                         : 'konser.jpg';
-                                $imageUrl = asset('storage/' . $imageName);
+                                $imageUrl = asset('images/events/' . $imageName);
                             }
                         @endphp
 

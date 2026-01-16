@@ -26,7 +26,7 @@
                 <td>{{ $order->detailOrders->sum('jumlah') }}</td>
                 <td>Rp {{ number_format($order->total_harga, 0, ',', '.') }}</td>
                 <td>
-                  <a class="btn btn-sm btn-outline"
+                  <a class="btn btn-sm btn-outline bg-blue-500 text-white"
                      href="{{ route('pemesanan.detail', $order) }}">
                     Detail
                   </a>

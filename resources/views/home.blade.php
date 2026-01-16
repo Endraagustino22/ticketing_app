@@ -1,4 +1,6 @@
 <x-app-layout>
+
+    {{-- Hero Section --}}
     <div class="hero bg-blue-900 py-6 md:py-20 sm:py-32">
         <div class="hero-content text-center text-white">
             <div class="max-w-4xl">
@@ -10,6 +12,8 @@
         </div>
     </div>
 
+
+    {{-- Event Section --}}
     <section class="max-w-7xl mx-auto py-12 px-6">
         <div class="flex justify-between items-center mb-8">
             <h2 class="text-2xl font-black uppercase italic">Event</h2>
@@ -25,6 +29,7 @@
             </div>
         </div>
 
+        {{-- Event Cards --}}
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             @foreach($events as $event)
                 <x-event-card :title="$event->judul" :date="$event->tanggal_waktu" :location="$event->lokasi"

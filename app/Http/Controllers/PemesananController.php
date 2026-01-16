@@ -14,6 +14,7 @@ class PemesananController extends Controller
 {
     public function index(Request $request)
     {
+        // Ambil tiket berdasarkan ID
         $tiket = Tiket::with('event')->findOrFail($request->tiket_id);
 
         return view('pemesanan.index', compact('tiket'));
@@ -49,7 +50,7 @@ class PemesananController extends Controller
                 // Hitung harga
                 $subtotal = (float) $tiket->harga * $qty;
 
-                // Buat order
+                // Menyimpan order
                 $order = Order::create([
                     'user_id'     => $userId,
                     'event_id'    => $tiket->event_id,
@@ -57,7 +58,7 @@ class PemesananController extends Controller
                     'total_harga' => $subtotal,
                 ]);
 
-                // Buat detail order
+                // Menyimpan detail order
                 DetailOrder::create([
                     'order_id'       => $order->id,
                     'tiket_id'       => $tiket->id,
